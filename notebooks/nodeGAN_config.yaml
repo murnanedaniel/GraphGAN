@@ -1,0 +1,37 @@
+datasplit: [10000, 10, 10]
+project: Node_G-GAN
+artifacts: /global/cfs/cdirs/m3443/data/lightning_models/lightning_checkpoints
+train_batch_size: 1000
+val_batch_size: 1
+
+generator_hparams:
+    aggregation: "sum_max"
+    input_channels: 2
+    hidden: 64
+    topo_size: 8
+    radius: 0.3
+    n_graph_iters: 6
+    nb_node_layer: 2
+    nb_edge_layer: 2
+    output_hidden_activation: ReLU
+    gnn_hidden_activation: Tanh
+    layernorm: True
+
+discriminator_hparams:
+    aggregation: "sum_max"
+    input_channels: 2
+    hidden: 32
+    n_graph_iters: 6
+    nb_node_layer: 2
+    nb_edge_layer: 2
+    output_hidden_activation: ReLU
+    gnn_hidden_activation: Tanh
+    layernorm: True
+
+smoothing: 0.7
+l2_loss: True
+lr: 0.001
+factor: 0.8
+patience: 100
+max_epochs: 1000
+warmup: 100

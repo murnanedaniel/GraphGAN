@@ -1,0 +1,44 @@
+datasplit: [200, 20, 10]
+project: Point_GAN
+artifacts: /global/cfs/cdirs/m3443/data/lightning_models/lightning_checkpoints
+train_batch_size: 1000
+val_batch_size: 1
+
+generator_hparams:
+    aggregation: "sum_mean"
+    input_graph_channels: 16
+    input_node_channels: 16
+    output_channels: 2
+    hidden: 32
+    n_graph_iters: 3
+    nb_node_layer: 3
+    nb_edge_layer: 3
+    output_hidden_activation: LeakyReLU
+    gnn_hidden_activation: LeakyReLU
+    final_output_activation: 
+    layernorm: True
+    batchnorm: True
+    lr: 0.0005
+    warmup: 50
+
+discriminator_hparams:
+    aggregation: "sum_mean"
+    input_channels: 2
+    hidden: 32
+    n_graph_iters: 3
+    nb_node_layer: 3
+    nb_edge_layer: 3
+    output_hidden_activation: LeakyReLU
+    gnn_hidden_activation: LeakyReLU
+    layernorm: True
+    batchnorm: True
+    dropout: 0.2
+    lr: 0.0005
+    warmup: 10
+    grad_penalty: 1
+
+smoothing: 0.9
+l2_loss: False
+factor: 0.8
+patience: 100
+max_epochs: 300

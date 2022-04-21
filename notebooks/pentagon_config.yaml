@@ -1,0 +1,21 @@
+datasplit: [1000, 100, 100]
+project: G-GAN_Polygons
+artifacts: /global/cfs/cdirs/m3443/data/lightning_models/lightning_checkpoints
+train_batch_size: 100 
+val_batch_size: 100
+
+aggregation: "sum_max"
+input_channels: 2
+hidden: 16
+n_graph_iters: 2
+nb_node_layer: 2
+nb_edge_layer: 2
+output_hidden_activation: ReLU
+gnn_hidden_activation: Tanh
+layernorm: False
+
+lr: 0.01
+factor: 0.3
+patience: 50
+max_epochs: 100
+warmup: 10
